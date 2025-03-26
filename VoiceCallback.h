@@ -2,15 +2,15 @@
 #define SYNTH_VOICECALLBACK_H
 #include <xaudio2.h>
 #include "Oscillator.h"
-typedef void (Synth::Oscillator::*handlerType)(void *pBufferContext);
+typedef void (Oscillator::*handlerType)(void *pBufferContext);
 
 class VoiceCallback : public IXAudio2VoiceCallback {
 public:
-    VoiceCallback(handlerType handler, Synth::Oscillator* oscinstance);
+    VoiceCallback(handlerType handler, Oscillator* oscinstance);
     void OnBufferEnd(void *pBufferContext);
 
     handlerType methodHandler;
-    Synth::Oscillator* osc;
+    Oscillator* osc;
 
     // Stub methods
     void OnStreamEnd() {}
