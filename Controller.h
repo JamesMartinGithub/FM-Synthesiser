@@ -16,11 +16,19 @@ public:
     Controller(){}
     int Start(int argc, char *argv[]);
     void RenderWaveform(BYTE* data);
-    void on_waveformDialA_valueChanged(int value);
-    void on_volumeFaderA_valueChanged(int value);
+    void SetMasterVolume(int value);
+    void SetWaveform(int value, bool isA);
+    void SetOscillatorVolume(int value, bool isA);
+    void SetUnison(int value, bool isA);
+    void SetDetune(int value, bool isA);
+    void SetUnisonWidth(int value, bool isA);
+    void SetModulationType(int value, bool isA);
+    void SetModulationValue(int value, bool isA);
+    void SetOctaveSemitone(int value, bool isOctave, bool isA);
 private:
     SynthUi* window;
-    Oscillator* oscA;
+    IXAudio2MasteringVoice *masteringVoice;
+    Oscillator* osc;
 };
 
 #endif //SYNTH_CONTROLLER_H

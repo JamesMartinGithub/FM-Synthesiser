@@ -26,10 +26,10 @@ void WaveRenderer::paintGL() {
 }
 
 void WaveRenderer::SetAudioData(unsigned char *data) {
-    // Update vertex array
+    // Update vertex array (Setup for stereo data)
     for (int i = 0; i < sampleCount; i+= 2) {
         vertices[i] = (i * (4.0f / (float)sampleCount)) - 1;
-        memcpy(&vertices[i + 1], &(data[(i / 2) * 4]), 4);
+        memcpy(&vertices[i + 1], &(data[2 * i]), 4);
     }
     update();
 }

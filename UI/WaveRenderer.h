@@ -12,7 +12,7 @@ public:
     void paintGL() override;
     void SetAudioData(unsigned char* data);
 private:
-    static const int sampleCount = 1000;
+    static const int sampleCount = 1024;
     float vertices[sampleCount] = {0.0f};
 };
 
