@@ -1,2 +1,2 @@
 # FM-Synthesiser
-(Work In Progress) Uses C++ and XAudio2 windows API
+(Work In Progress) Uses C++, XAudio2 windows API, and Qt UI
