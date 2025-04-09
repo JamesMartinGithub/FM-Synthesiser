@@ -21,7 +21,7 @@ void WaveRenderer::paintGL() {
     // Load waveBuffer and draw vertices
     glBindVertexArray(waveBuffer);
     glLineWidth(1.0f);
-    glDrawArrays(GL_LINE_STRIP, 0, sampleCount/2);
+    glDrawArrays(GL_LINE_STRIP, 0, sampleCount / 2);
     glBindVertexArray(0);
 }
 

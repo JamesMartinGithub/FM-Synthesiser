@@ -2,14 +2,20 @@
 #include "ui_SynthUI.h"
 #include "Controller.h"
 #include <QLineEdit>
+#include <QKeyEvent>
 
 SynthUi::SynthUi(Controller* controllerRef, QWidget *parent)
     : controller(controllerRef)
     , QMainWindow(parent)
     , ui(new Ui::SynthUi) {
     ui->setupUi(this);
+    setFixedSize(700, 600);
     InitialiseSpinBox(ui->unisonSelectorA);
     InitialiseSpinBox(ui->unisonSelectorB);
+    InitialiseSpinBox(ui->octaveSelectorA);
+    InitialiseSpinBox(ui->octaveSelectorB);
+    InitialiseSpinBox(ui->semitoneSelectorA);
+    InitialiseSpinBox(ui->semitoneSelectorB);
 }
 
 SynthUi::~SynthUi() {
@@ -22,6 +28,27 @@ void SynthUi::SetController(Controller* controllerRef) {
 
 void SynthUi::SetAudioData(unsigned char *data) {
     ui->waveformRenderer->SetAudioData(data);
+}
+
+void SynthUi::keyPressEvent(QKeyEvent *event) {
+    if(!event->isAutoRepeat())
+    {
+        if (char keyChar = KeyToChar(event->key()); keyChar != '*') {
+            controller->PlayNote(keyChar);
+            //if (int held =  held != -1) {
+            //    heldKeys[held] = keyChar;
+            //}
+        }
+    }
+}
+
+void SynthUi::keyReleaseEvent(QKeyEvent *event) {
+    if(!event->isAutoRepeat())
+    {
+        if (char keyChar = KeyToChar(event->key()); keyChar != '*') {
+            controller->ReleaseNote(keyChar);
+        }
+    }
 }
 
 void SynthUi::InitialiseSpinBox(QSpinBox* spinBox) {
@@ -53,11 +80,87 @@ void SynthUi::ModulationArrowClicked(bool isA, bool isUp) {
     ui->modulationLabelA->setText(text1);
     ui->modulationLabelB->setText(text2);
 }
+
+char SynthUi::KeyToChar(int key) {
+    char keyChar = key;
+    switch (key) {
+        case Qt::Key_Z:
+        case Qt::Key_S:
+        case Qt::Key_X:
+        case Qt::Key_D:
+        case Qt::Key_C:
+        case Qt::Key_V:
+        case Qt::Key_G:
+        case Qt::Key_B:
+        case Qt::Key_H:
+        case Qt::Key_N:
+        case Qt::Key_J:
+        case Qt::Key_M:
+        case Qt::Key_Comma:
+        case Qt::Key_L:
+        case Qt::Key_Period:
+        case Qt::Key_Semicolon:
+        case Qt::Key_Slash:
+            return keyChar;
+        default:
+            return '*';
+    }
+}
+
+QString SynthUi::TimeToText(float time) {
+    QString text;
+    if (time >= 1.0f) { text += std::to_string(time).substr(0, 4) + "s"; }
+    if (time < 1.0f && 0.1f <= time) { text += std::to_string(time * 1000).substr(0, 3) + "ms"; }
+    if (time < 0.1f) { text += std::to_string(time * 1000).substr(0, 4) + "ms"; }
+    return text;
+}
+
+QString SynthUi::PercentToText(float percent) {
+    QString text;
+    text += std::to_string((int)(percent * 100)) + "%";
+    return text;
+}
+
+QString SynthUi::PanToText(int pan) {
+    QString text;
+    if (pan < 50) { text += std::to_string(100 - pan) + "L"; }
+    if (pan == 50) { text += "C"; }
+    if (pan > 50) { text += std::to_string(pan) + "R"; }
+    return text;
+}
 /// Master
 void SynthUi::on_volumeFaderMaster_valueChanged(int value) {
     controller->SetMasterVolume(value);
 }
+
+void SynthUi::on_adsrAttackDial_valueChanged(int value) {
+    float fValue = controller->SetADSR(value, 'A');
+    ui->adsrAttackLabel->setText(TimeToText(fValue));
+}
+
+void SynthUi::on_adsrDecayDial_valueChanged(int value) {
+    float fValue = controller->SetADSR(value, 'D');
+    ui->adsrDecayLabel->setText(TimeToText(fValue));
+}
+
+void SynthUi::on_adsrSustainDial_valueChanged(int value) {
+    float fValue = controller->SetADSR(value, 'S');
+    ui->adsrSustainLabel->setText(PercentToText(fValue));
+}
+
+void SynthUi::on_adsrReleaseDial_valueChanged(int value) {
+    float fValue = controller->SetADSR(value, 'R');
+    ui->adsrReleaseLabel->setText(TimeToText(fValue));
+}
 /// A
+void SynthUi::on_octaveSelectorA_valueChanged(int arg1) {
+    controller->SetOctaveSemitone(arg1, true, true);
+}
+
+void SynthUi::on_semitoneSelectorA_valueChanged(int arg1) {
+    controller->SetOctaveSemitone(arg1, false, true);
+}
+
 void SynthUi::on_waveformDialA_valueChanged(int value) {
     controller->SetWaveform(value, true);
 }
@@ -72,10 +175,12 @@ void SynthUi::on_unisonSelectorA_valueChanged(int arg1) {
 
 void SynthUi::on_detuneDialA_valueChanged(int value) {
     controller->SetDetune(value, true);
+    ui->detuneLabelA->setText(PercentToText((float)value / 100));
 }
 
 void SynthUi::on_unisonWidthDialA_valueChanged(int value) {
     controller->SetUnisonWidth(value, true);
+    ui->unisonWidthLabelA->setText(PercentToText((float)value / 100));
 }
 
 void SynthUi::on_modulationUpA_clicked() {
@@ -88,16 +193,22 @@ void SynthUi::on_modulationDownA_clicked() {
 
 void SynthUi::on_modulationDialA_valueChanged(int value) {
     controller->SetModulationValue(value, true);
+    ui->modulationValueLabelA->setText(PercentToText((float)value / 100));
 }
 
-void SynthUi::on_octaveSelectorA_valueChanged(int arg1) {
-    controller->SetOctaveSemitone(arg1, true, true);
-}
-
-void SynthUi::on_semitoneSelectorA_valueChanged(int arg1) {
-    controller->SetOctaveSemitone(arg1, false, true);
+void SynthUi::on_panDialA_valueChanged(int value){
+    controller->SetPan(value, true);
+    ui->panLabelA->setText(PanToText(value));
 }
 /// B
+void SynthUi::on_octaveSelectorB_valueChanged(int arg1) {
+    controller->SetOctaveSemitone(arg1, true, false);
+}
+
+void SynthUi::on_semitoneSelectorB_valueChanged(int arg1) {
+    controller->SetOctaveSemitone(arg1, false, false);
+}
+
 void SynthUi::on_waveformDialB_valueChanged(int value) {
     controller->SetWaveform(value, false);
 }
@@ -112,10 +223,12 @@ void SynthUi::on_unisonSelectorB_valueChanged(int arg1) {
 
 void SynthUi::on_detuneDialB_valueChanged(int value) {
     controller->SetDetune(value, false);
+    ui->detuneLabelB->setText(PercentToText((float)value / 100));
 }
 
 void SynthUi::on_unisonWidthDialB_valueChanged(int value) {
     controller->SetUnisonWidth(value, false);
+    ui->unisonWidthLabelB->setText(PercentToText((float)value / 100));
 }
 
 void SynthUi::on_modulationUpB_clicked() {
@@ -128,12 +241,10 @@ void SynthUi::on_modulationDownB_clicked() {
 
 void SynthUi::on_modulationDialB_valueChanged(int value) {
     controller->SetModulationValue(value, false);
+    ui->modulationValueLabelB->setText(PercentToText((float)value / 100));
 }
 
-void SynthUi::on_octaveSelectorB_valueChanged(int arg1) {
-    controller->SetOctaveSemitone(arg1, true, false);
-}
-
-void SynthUi::on_semitoneSelectorB_valueChanged(int arg1) {
-    controller->SetOctaveSemitone(arg1, false, false);
+void SynthUi::on_panDialB_valueChanged(int value){
+    controller->SetPan(value, false);
+    ui->panLabelB->setText(PanToText(value));
 }
