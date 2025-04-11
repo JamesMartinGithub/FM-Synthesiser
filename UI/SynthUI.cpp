@@ -9,7 +9,7 @@ SynthUi::SynthUi(Controller* controllerRef, QWidget *parent)
     , QMainWindow(parent)
     , ui(new Ui::SynthUi) {
     ui->setupUi(this);
-    setFixedSize(700, 600);
+    setFixedSize(700, 470);
     InitialiseSpinBox(ui->unisonSelectorA);
     InitialiseSpinBox(ui->unisonSelectorB);
     InitialiseSpinBox(ui->octaveSelectorA);
@@ -81,6 +81,18 @@ void SynthUi::ModulationArrowClicked(bool isA, bool isUp) {
     ui->modulationLabelB->setText(text2);
 }
 
+void SynthUi::FilterArrowClicked(bool isUp) {
+    // Increment/Decrement filter mode cyclically
+    filterMode += isUp ? 1 : -1;
+    if (filterMode < 0) { filterMode = filterModes.size() - 1; }
+    if (filterMode >= filterModes.size()) { filterMode = 0; }
+    controller->SetFilterType(filterMode);
+    // Update label
+    QString text;
+    text += filterModes[filterMode];
+    ui->filterLabel->setText(text);
+}
+
 char SynthUi::KeyToChar(int key) {
     char keyChar = key;
     switch (key) {
@@ -128,6 +140,12 @@ QString SynthUi::PanToText(int pan) {
     if (pan > 50) { text += std::to_string(pan) + "R"; }
     return text;
 }
+
+QString SynthUi::FrequencyToText(float frequency) {
+    QString text;
+    text += std::to_string((int)frequency) + "Hz";
+    return text;
+}
 /// Master
 void SynthUi::on_volumeFaderMaster_valueChanged(int value) {
     controller->SetMasterVolume(value);
@@ -151,6 +169,32 @@ void SynthUi::on_adsrSustainDial_valueChanged(int value) {
 void SynthUi::on_adsrReleaseDial_valueChanged(int value) {
     float fValue = controller->SetADSR(value, 'R');
     ui->adsrReleaseLabel->setText(TimeToText(fValue));
+}
+
+void SynthUi::on_filterUp_clicked() {
+    FilterArrowClicked(true);
+}
+
+void SynthUi::on_filterDown_clicked() {
+    FilterArrowClicked(false);
+}
+
+void SynthUi::on_filterToggleA_toggled(bool checked) {
+    controller->SetFilterSelection(checked, true);
+}
+
+void SynthUi::on_filterToggleB_toggled(bool checked) {
+    controller->SetFilterSelection(checked, false);
+}
+
+void SynthUi::on_filterFrequencyDial_valueChanged(int value) {
+    float fValue = controller->SetFilterVariable(value, 'F');
+    ui->filterFrequencyLabel->setText(FrequencyToText(fValue));
+}
+
+void SynthUi::on_filterResonanceDial_valueChanged(int value) {
+    float fValue = controller->SetFilterVariable(value, 'R');
+    ui->filterResonanceLabel->setText(PercentToText(fValue));
 }
 /// A
 void SynthUi::on_octaveSelectorA_valueChanged(int arg1) {

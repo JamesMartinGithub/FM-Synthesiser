@@ -20,5 +20,5 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${UI_DIR})
 link_directories("C:/Program Files (x86)/Windows Kits/10/Lib/10.0.22621.0/um/x64")
 link_directories("C:/Qt/6.8.2/mingw_64/lib")
 
-add_executable(Synth main.cpp Controller.cpp Controller.h Oscillator.cpp Oscillator.h VoiceCallback.cpp VoiceCallback.h AudioSettings.h UI/SynthUI.cpp UI/SynthUI.h UI/SynthUI.ui UI/WaveRenderer.cpp UI/WaveRenderer.h RandomGenerator.cpp RandomGenerator.h ADSR.h OscillatorVariables.h)
+add_executable(Synth main.cpp Controller.cpp Controller.h Oscillator.cpp Oscillator.h VoiceCallback.cpp VoiceCallback.h AudioSettings.h UI/SynthUI.cpp UI/SynthUI.h UI/SynthUI.ui UI/WaveRenderer.cpp UI/WaveRenderer.h RandomGenerator.cpp RandomGenerator.h ADSR.h)
 target_link_libraries(Synth xaudio2.lib Qt6::Widgets Qt6::OpenGLWidgets)

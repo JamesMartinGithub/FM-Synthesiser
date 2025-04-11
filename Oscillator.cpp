@@ -19,6 +19,7 @@ Oscillator::Oscillator(int pId, Controller* pController, AudioSettings pSettings
 
     // Create and assign buffer arrays
     nextAdsrPhase = floor(sampleRate * adsr.attack);
+    SetFilterType(0);
     pcmAudio1 = new BYTE[bufferSizeBytes];
     pcmAudio2 = new BYTE[bufferSizeBytes];
     buffer1.pAudioData = pcmAudio1;
@@ -158,6 +159,10 @@ void Oscillator::GenerateAudio(BYTE *pcmAudio, const DWORD *lengthInBytes) {
             // Apply panning
             decValueL = std::lerp(decValueL, 0.0f, pan[osc]);
             decValueR = std::lerp(0.0f, decValueR, pan[osc]);
+            // Filter (for 1 selected osc)
+            if (filterOscs[0] != filterOscs[1] && filterOscs[osc]) {
+                ApplyFilter(osc, &decValueL, &decValueR);
+            }
             if (osc == carrierOsc) {
                 // Combine oscillators A and B and apply volumes
                 if (channels == 1) {
@@ -176,8 +181,6 @@ void Oscillator::GenerateAudio(BYTE *pcmAudio, const DWORD *lengthInBytes) {
                             nextAdsrPhase = floor(sampleRate * (adsr.attack + adsr.decay));
                             break;
                         case 2:
-                            //nextAdsrPhase = floor(sampleRate * (adsr.attack + adsr.decay + adsr.release));
-                            //releaseFromAmplitude = adsr.sustain;
                             break;
                         case 3:
                             sourceVoice->Discontinuity();
@@ -208,6 +211,10 @@ void Oscillator::GenerateAudio(BYTE *pcmAudio, const DWORD *lengthInBytes) {
                         decValueR = 0.0f;
                 }
                 previousSamples++;
+                //Filter (for both oscs selected)
+                if (filterOscs[0] && filterOscs[1]) {
+                    ApplyFilter(osc, &decValueL, &decValueR);
+                }
             }
             // Copy sample to buffer array
             if (channels == 1) {
@@ -262,6 +269,10 @@ void Oscillator::Start(float pFrequency) {
     previousSamples = 0;
     adsrPhase = 0;
     nextAdsrPhase = floor(sampleRate * adsr.attack);
+    for (int i = 0; i < 8; i++) {
+        filterBufferL[i] = 0.0f;
+        filterBufferR[i] = 0.0f;
+    }
     // Start audio output
     GenerateAudio(pcmAudio1, &bufferSizeBytes);
     sourceVoice->SubmitSourceBuffer(&buffer1);
@@ -277,6 +288,24 @@ void Oscillator::Release() {
         nextAdsrPhase = lastAdsrPhase + floor(sampleRate * adsr.release);
         previousSamples = lastAdsrPhase;
     }
+}
+
+void Oscillator::ApplyFilter(int osc, float* valueL, float* valueR) {
+    int o = (osc == 0) ? 0 : 4;
+    float newValueL = coefB[0] * *valueL + coefB[1] * filterBufferL[0 + o] + coefB[2] * filterBufferL[1 + o]
+                         - coefA[1] * filterBufferL[2 + o] - coefA[2] * filterBufferL[3 + o];
+    float newValueR = coefB[0] * *valueR + coefB[1] * filterBufferR[0 + o] + coefB[2] * filterBufferR[1 + o]
+                         - coefA[1] * filterBufferR[2 + o] - coefA[2] * filterBufferR[3 + o];
+    filterBufferL[1 + o] = filterBufferL[0 + o];
+    filterBufferL[0 + o] = *valueL;
+    filterBufferL[3 + o] = filterBufferL[2 + o];
+    filterBufferL[2 + o] = newValueL;
+    filterBufferR[1 + o] = filterBufferR[0 + o];
+    filterBufferR[0 + o] = *valueR;
+    filterBufferR[3 + o] = filterBufferR[2 + o];
+    filterBufferR[2 + o] = newValueR;
+    *valueL = newValueL;
+    *valueR = newValueR;
 }
 
 void Oscillator::SetFrequency(float pFrequency) {
@@ -345,4 +374,54 @@ void Oscillator::SetADSR(float pValue, char pFieldId) {
         case 'R':
             adsr.release = pValue; break;
     }
+}
+
+void Oscillator::SetFilterSelection(bool pEnabled, bool isA) {
+    filterOscs[isA ? 1 : 0] = pEnabled;
+}
+
+void Oscillator::SetFilterType(int pType) {
+    filterType = pType;
+    switch (filterType) {
+        case 0: { // Low pass
+            norm = 1.0f / (1.0f + K / resonance + K * K);
+            coefB[0] = K * K * norm;
+            coefB[1] = 2 * coefB[0];
+            coefB[2] = coefB[0];
+            coefA[0] = (1 + K / resonance + K * K) * norm;
+            coefA[1] = 2 * (K * K - 1.0f) * norm;
+            coefA[2] = (1 - K / resonance + K * K) * norm;
+            break; }
+        case 1: // High pass
+            norm = 1.0f / (1 + K / resonance + K * K);
+            coefB[0] = 1 * norm;
+            coefB[1] = -2.0f * coefB[0];
+            coefB[2] = coefB[0];
+            coefA[0] = (1 + K / resonance + K * K) * norm;
+            coefA[1] = 2 * (K * K - 1.0f) * norm;
+            coefA[2] = (1 - K / resonance + K * K) * norm;
+        case 2: // Band pass
+            norm = 1.0f / (1.0f + K / resonance + K * K);
+            coefB[0] = K / resonance * norm;
+            coefB[1] = 0.0f;
+            coefB[2] = -coefB[0];
+            coefA[0] = (1 + K / resonance + K * K) * norm;
+            coefA[1] = 2 * (K * K - 1.0f) * norm;
+            coefA[2] = (1 - K / resonance + K * K) * norm;
+            break;
+    }
+}
+
+void Oscillator::SetFilterVariable(float pValue, char pFieldId) {
+    switch (pFieldId) {
+        case 'F':
+            centralFrequency = pValue;
+            K = std::tan(halfWavelength * (centralFrequency / sampleRate));
+            break;
+        case 'R':
+            resonance = pValue;
+            break;
+    }
+    // Set coefficients
+    SetFilterType(filterType);
 }

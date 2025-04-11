@@ -117,6 +117,26 @@ float Controller::SetADSR(int value, char fieldId) {
     return fValue;
 }
 
+void Controller::SetFilterSelection(bool value, bool isA) {
+    for (auto &entry : oscillators) { entry->SetFilterSelection(value, isA); }
+}
+
+void Controller::SetFilterType(int value) {
+    for (auto &entry : oscillators) { entry->SetFilterType(value); }
+}
+
+float Controller::SetFilterVariable(int value, char fieldId) {
+    float fValue;
+    switch (fieldId) {
+        case 'F':
+            fValue = std::clamp(Exponential(((float)value / 100), expCurve) * 22000.0f, 1.0f, 22000.0f); break;
+        case 'R':
+            fValue = std::clamp((float)value / 100, 0.01f, 1.0f); break;
+    }
+    for (auto &entry : oscillators) { entry->SetFilterVariable(fValue, fieldId); }
+    return fValue;
+}
+
 float Controller::Exponential(float x, float curve) {
     return (curve * std::exp(x * (std::log((1 + curve) / curve))) - curve);
 }

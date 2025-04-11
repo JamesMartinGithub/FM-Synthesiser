@@ -32,6 +32,9 @@ public:
     void SetOctaveSemitone(int value, bool isOctave, bool isA);
     void SetPan(int value, bool isA);
     float SetADSR(int value, char fieldId);
+    void SetFilterSelection(bool value, bool isA);
+    void SetFilterType(int value);
+    float SetFilterVariable(int value, char fieldId);
 private:
     float Exponential(float x, float curve);
 

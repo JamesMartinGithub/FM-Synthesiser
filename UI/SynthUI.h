@@ -24,15 +24,19 @@ public:
 private:
     void InitialiseSpinBox(QSpinBox* spinBox);
     void ModulationArrowClicked(bool isA, bool isUp);
+    void FilterArrowClicked(bool isUp);
     char KeyToChar(int key);
     QString TimeToText(float time);
     QString PercentToText(float percent);
     QString PanToText(int pan);
+    QString FrequencyToText(float frequency);
 
     Ui::SynthUi *ui;
     Controller* controller;
     std::map<int, std::string> modulationModes = {{0, "OFF"}, {1, "FM"}, {2, "AM"}, {3, "RM"}, {4, "SYC"}, {5, "SYW"}, {6, "QTZ"}};
     int modulationMode[2] = {0};
+    std::map<int, std::string> filterModes = {{0, "LP"}, {1, "HP"}, {2, "BP"}};
+    int filterMode = 0;
 private slots:
     void on_volumeFaderMaster_valueChanged(int value);
     void on_adsrAttackDial_valueChanged(int value);
@@ -61,6 +65,12 @@ private slots:
     void on_semitoneSelectorB_valueChanged(int arg1);
     void on_panDialA_valueChanged(int value);
     void on_panDialB_valueChanged(int value);
+    void on_filterUp_clicked();
+    void on_filterDown_clicked();
+    void on_filterToggleA_toggled(bool checked);
+    void on_filterToggleB_toggled(bool checked);
+    void on_filterFrequencyDial_valueChanged(int value);
+    void on_filterResonanceDial_valueChanged(int value);
 };
 
 #endif // SYNTHUI_H
