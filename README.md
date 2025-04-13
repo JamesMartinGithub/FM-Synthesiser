@@ -18,6 +18,7 @@
 - Oscillator specific and master volume faders
 - Up to 8-voice unison with variable detune and stereo spread
 - Stereo pan control
+- Keyboard input (Z -> /)
 - Source code supports variable buffer size, samplerate, channel count, and polyphony
 
 ## Gallery:
