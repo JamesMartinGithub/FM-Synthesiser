@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "WaveRenderer.h"
+#include "ParameterKnob.h"
 
 namespace Ui {
 class SynthUi;

@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>700</width>
-    <height>500</height>
+    <height>470</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -30,6 +30,11 @@
   </property>
   <property name="windowTitle">
    <string>FMSynth</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	background-image: url(:/Images/Images/Background.png);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -50,6 +55,9 @@
      <height>458</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
@@ -61,7 +69,7 @@
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="3">
-      <widget class="QDial" name="unisonWidthDialB">
+      <widget class="ParameterKnob" name="unisonWidthDialB">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -76,6 +84,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -107,6 +118,12 @@
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(179, 179, 179);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+background-image: url(:/Images/Images/Button.png);</string>
+       </property>
        <property name="keyboardTracking">
         <bool>false</bool>
        </property>
@@ -119,7 +136,7 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QDial" name="detuneDialB">
+      <widget class="ParameterKnob" name="detuneDialB">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -134,6 +151,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -182,6 +202,9 @@
            <property name="focusPolicy">
             <enum>Qt::FocusPolicy::NoFocus</enum>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(179, 179, 179);</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -207,6 +230,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(179, 179, 179);</string>
          </property>
          <property name="text">
           <string>OFF</string>
@@ -234,6 +260,9 @@
            </property>
            <property name="focusPolicy">
             <enum>Qt::FocusPolicy::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(179, 179, 179);</string>
            </property>
            <property name="text">
             <string/>
@@ -279,6 +308,11 @@
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::handle {
+	background-color: rgb(179, 179, 179);
+}</string>
+       </property>
        <property name="maximum">
         <number>100</number>
        </property>
@@ -291,7 +325,7 @@
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QDial" name="modulationDialB">
+      <widget class="ParameterKnob" name="modulationDialB">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -306,6 +340,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -316,7 +353,7 @@
       </widget>
      </item>
      <item row="1" column="3">
-      <widget class="QDial" name="panDialB">
+      <widget class="ParameterKnob" name="panDialB">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -331,6 +368,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -387,6 +427,11 @@
     <property name="focusPolicy">
      <enum>Qt::FocusPolicy::NoFocus</enum>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::handle {
+	background-color: rgb(179, 179, 179);
+}</string>
+    </property>
     <property name="maximum">
      <number>100</number>
     </property>
@@ -408,7 +453,7 @@
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="1">
-      <widget class="QDial" name="detuneDialA">
+      <widget class="ParameterKnob" name="detuneDialA">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -423,6 +468,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -433,7 +481,7 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QDial" name="unisonWidthDialA">
+      <widget class="ParameterKnob" name="unisonWidthDialA">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -448,6 +496,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -458,7 +509,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QDial" name="modulationDialA">
+      <widget class="ParameterKnob" name="modulationDialA">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -473,6 +524,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -517,6 +571,11 @@
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::handle {
+	background-color: rgb(179, 179, 179);
+}</string>
+       </property>
        <property name="maximum">
         <number>100</number>
        </property>
@@ -549,6 +608,21 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(179, 179, 179);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+background-image: url(:/Images/Images/Button.png);
+
+
+
+
+
+</string>
+       </property>
+       <property name="frame">
+        <bool>false</bool>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -609,6 +683,9 @@
            <property name="focusPolicy">
             <enum>Qt::FocusPolicy::NoFocus</enum>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(179, 179, 179);</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -634,6 +711,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(179, 179, 179);</string>
          </property>
          <property name="text">
           <string>OFF</string>
@@ -668,6 +748,9 @@
            <property name="focusPolicy">
             <enum>Qt::FocusPolicy::NoFocus</enum>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(179, 179, 179);</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -678,7 +761,7 @@
       </layout>
      </item>
      <item row="1" column="2">
-      <widget class="QDial" name="panDialA">
+      <widget class="ParameterKnob" name="panDialA">
        <property name="minimumSize">
         <size>
          <width>90</width>
@@ -693,6 +776,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -719,9 +805,28 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="leftMargin">
         <number>10</number>
        </property>
+       <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <widget class="QSpinBox" name="octaveSelectorA">
          <property name="minimumSize">
@@ -743,6 +848,12 @@
          </property>
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(179, 179, 179);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+background-image: url(:/Images/Images/Button.png);</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -789,6 +900,12 @@
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(179, 179, 179);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+background-image: url(:/Images/Images/Button.png);</string>
+         </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
@@ -813,7 +930,23 @@
         </widget>
        </item>
        <item>
-        <widget class="QDial" name="waveformDialA">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="ParameterKnob" name="waveformDialA">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -822,18 +955,24 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>90</width>
-           <height>90</height>
+           <width>70</width>
+           <height>70</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>90</width>
-           <height>90</height>
+           <width>70</width>
+           <height>70</height>
           </size>
          </property>
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Images/Images/DialSquare.png);</string>
          </property>
          <property name="maximum">
           <number>4</number>
@@ -848,6 +987,22 @@
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>27</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
@@ -865,16 +1020,40 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <kerning>false</kerning>
+        </font>
+       </property>
       </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="sizeConstraint">
         <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
        </property>
        <property name="rightMargin">
         <number>10</number>
        </property>
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>18</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <widget class="QSpinBox" name="octaveSelectorB">
          <property name="minimumSize">
@@ -896,6 +1075,12 @@
          </property>
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(179, 179, 179);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+background-image: url(:/Images/Images/Button.png);</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -942,6 +1127,12 @@
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(179, 179, 179);
+color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+background-image: url(:/Images/Images/Button.png);</string>
+         </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
@@ -966,7 +1157,23 @@
         </widget>
        </item>
        <item>
-        <widget class="QDial" name="waveformDialB">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="ParameterKnob" name="waveformDialB">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -975,24 +1182,33 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>90</width>
-           <height>90</height>
+           <width>70</width>
+           <height>70</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>90</width>
-           <height>90</height>
+           <width>70</width>
+           <height>70</height>
           </size>
          </property>
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/Images/Images/DialSquare.png);</string>
          </property>
          <property name="maximum">
           <number>4</number>
          </property>
          <property name="value">
           <number>0</number>
+         </property>
+         <property name="tracking">
+          <bool>true</bool>
          </property>
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>
@@ -1001,6 +1217,22 @@
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>15</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
@@ -1023,7 +1255,7 @@
       <enum>QLayout::SizeConstraint::SetFixedSize</enum>
      </property>
      <item>
-      <widget class="QDial" name="adsrAttackDial">
+      <widget class="ParameterKnob" name="adsrAttackDial">
        <property name="minimumSize">
         <size>
          <width>75</width>
@@ -1038,6 +1270,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -1051,7 +1286,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QDial" name="adsrDecayDial">
+      <widget class="ParameterKnob" name="adsrDecayDial">
        <property name="minimumSize">
         <size>
          <width>75</width>
@@ -1066,6 +1301,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -1079,7 +1317,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QDial" name="adsrSustainDial">
+      <widget class="ParameterKnob" name="adsrSustainDial">
        <property name="minimumSize">
         <size>
          <width>75</width>
@@ -1094,6 +1332,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -1107,7 +1348,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QDial" name="adsrReleaseDial">
+      <widget class="ParameterKnob" name="adsrReleaseDial">
        <property name="minimumSize">
         <size>
          <width>75</width>
@@ -1122,6 +1363,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -1131,465 +1375,6 @@
        </property>
        <property name="orientation">
         <enum>Qt::Orientation::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>17</x>
-      <y>366</y>
-      <width>302</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_10">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="adsrAttackLabel">
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>2.52ms</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="adsrDecayLabel">
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>1.04s</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="adsrSustainLabel">
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>100%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="adsrReleaseLabel">
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>14.0ms</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_3">
-    <property name="geometry">
-     <rect>
-      <x>69</x>
-      <y>245</y>
-      <width>209</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_11">
-     <item>
-      <widget class="QLabel" name="modulationValueLabelA">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>0%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="panLabelA">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>C</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>466</x>
-      <y>245</y>
-      <width>215</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_12">
-     <item>
-      <widget class="QLabel" name="modulationValueLabelB">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>0%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="panLabelB">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>C</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_5">
-    <property name="geometry">
-     <rect>
-      <x>69</x>
-      <y>148</y>
-      <width>209</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_13">
-     <item>
-      <widget class="QLabel" name="detuneLabelA">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>0%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="unisonWidthLabelA">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>0%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_6">
-    <property name="geometry">
-     <rect>
-      <x>466</x>
-      <y>148</y>
-      <width>215</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_14">
-     <item>
-      <widget class="QLabel" name="detuneLabelB">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>0%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="unisonWidthLabelB">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>90</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>0%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
        </property>
       </widget>
      </item>
@@ -1659,6 +1444,9 @@
            <property name="focusPolicy">
             <enum>Qt::FocusPolicy::NoFocus</enum>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(179, 179, 179);</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -1684,6 +1472,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(179, 179, 179);</string>
          </property>
          <property name="text">
           <string>LP</string>
@@ -1723,6 +1514,9 @@
            </property>
            <property name="focusPolicy">
             <enum>Qt::FocusPolicy::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(179, 179, 179);</string>
            </property>
            <property name="text">
             <string/>
@@ -1769,6 +1563,14 @@
          <height>30</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(179, 179, 179);</string>
+       </property>
        <property name="text">
         <string>A</string>
        </property>
@@ -1797,6 +1599,14 @@
          <height>30</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(179, 179, 179);</string>
+       </property>
        <property name="text">
         <string>B</string>
        </property>
@@ -1822,7 +1632,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QDial" name="filterFrequencyDial">
+      <widget class="ParameterKnob" name="filterFrequencyDial">
        <property name="minimumSize">
         <size>
          <width>75</width>
@@ -1837,6 +1647,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -1850,7 +1663,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QDial" name="filterResonanceDial">
+      <widget class="ParameterKnob" name="filterResonanceDial">
        <property name="minimumSize">
         <size>
          <width>75</width>
@@ -1865,6 +1678,9 @@
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/Images/Images/DialRound.png);</string>
        </property>
        <property name="minimum">
         <number>0</number>
@@ -1882,102 +1698,564 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_8">
+   <widget class="QLabel" name="filterResonanceLabel">
     <property name="geometry">
      <rect>
-      <x>528</x>
-      <y>364</y>
-      <width>153</width>
-      <height>22</height>
+      <x>598</x>
+      <y>367</y>
+      <width>75</width>
+      <height>20</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_17">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="filterFrequencyLabel">
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>1577Hz</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="filterResonanceLabel">
-       <property name="minimumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>1%</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-       <property name="indent">
-        <number>-1</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>1%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>700</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar">
-   <property name="sizeGripEnabled">
-    <bool>false</bool>
-   </property>
+   <widget class="QLabel" name="filterFrequencyLabel">
+    <property name="geometry">
+     <rect>
+      <x>523</x>
+      <y>367</y>
+      <width>75</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>1577Hz</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="adsrReleaseLabel">
+    <property name="geometry">
+     <rect>
+      <x>245</x>
+      <y>367</y>
+      <width>75</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>14.0ms</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="adsrSustainLabel">
+    <property name="geometry">
+     <rect>
+      <x>92</x>
+      <y>367</y>
+      <width>75</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>100%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="adsrDecayLabel">
+    <property name="geometry">
+     <rect>
+      <x>169</x>
+      <y>367</y>
+      <width>75</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>1.04s</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="adsrAttackLabel">
+    <property name="geometry">
+     <rect>
+      <x>17</x>
+      <y>367</y>
+      <width>75</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>75</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>2.52ms</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="panLabelA">
+    <property name="geometry">
+     <rect>
+      <x>182</x>
+      <y>251</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="modulationValueLabelA">
+    <property name="geometry">
+     <rect>
+      <x>77</x>
+      <y>251</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="modulationValueLabelB">
+    <property name="geometry">
+     <rect>
+      <x>475</x>
+      <y>251</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="panLabelB">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>251</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="unisonWidthLabelA">
+    <property name="geometry">
+     <rect>
+      <x>182</x>
+      <y>154</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="detuneLabelA">
+    <property name="geometry">
+     <rect>
+      <x>77</x>
+      <y>154</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="detuneLabelB">
+    <property name="geometry">
+     <rect>
+      <x>475</x>
+      <y>154</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="unisonWidthLabelB">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>154</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>90</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0%</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
   </widget>
  </widget>
  <customwidgets>
@@ -1985,6 +2263,11 @@
    <class>WaveRenderer</class>
    <extends>QOpenGLWidget</extends>
    <header location="global">WaveRenderer.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ParameterKnob</class>
+   <extends>QDial</extends>
+   <header location="global">ParameterKnob.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
