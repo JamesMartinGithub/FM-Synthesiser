@@ -1830,7 +1830,7 @@ background-image: url(:/Images/Images/Button.png);</string>
    <widget class="QLabel" name="adsrSustainLabel">
     <property name="geometry">
      <rect>
-      <x>92</x>
+      <x>169</x>
       <y>367</y>
       <width>75</width>
       <height>20</height>
@@ -1869,7 +1869,7 @@ background-image: url(:/Images/Images/Button.png);</string>
    <widget class="QLabel" name="adsrDecayLabel">
     <property name="geometry">
      <rect>
-      <x>169</x>
+      <x>93</x>
       <y>367</y>
       <width>75</width>
       <height>20</height>

@@ -22,10 +22,6 @@ SynthUi::~SynthUi() {
     delete ui;
 }
 
-void SynthUi::SetController(Controller* controllerRef) {
-    controller = controllerRef;
-}
-
 void SynthUi::SetAudioData(unsigned char *data) {
     ui->waveformRenderer->SetAudioData(data);
 }

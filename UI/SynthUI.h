@@ -18,7 +18,6 @@ class SynthUi : public QMainWindow
 public:
     explicit SynthUi(Controller* controllerRef, QWidget *parent = nullptr);
     ~SynthUi();
-    void SetController(Controller* controllerRef);
     void SetAudioData(unsigned char* data);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
